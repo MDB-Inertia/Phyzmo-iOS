@@ -10,11 +10,15 @@ import UIKit
 
 class MainVC: UIViewController {
 
+    @IBOutlet weak var jsonResponse: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        APIClient.getPositionCV() {positionData in
+            DispatchQueue.main.async {
+                print(positionData)
+            }
+        }
     }
-
-
 }
 

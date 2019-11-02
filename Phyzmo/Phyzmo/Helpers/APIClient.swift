@@ -10,7 +10,8 @@ import Foundation
 import UIKit
 
 class APIClient {
-    func getPositionCV(completion: @escaping ([String:Any]) -> ()) {
+    static func getPositionCV(completion: @escaping ([[String:Double]]) -> ()) {
+        //Currently fixed on single video
         let requestURL = "https://us-central1-phyzmo.cloudfunctions.net/position-cv?uri=gs://phyzmo-videos/slowed_video.mp4"
         guard let url = URL(string: requestURL) else {return}
         
@@ -32,7 +33,7 @@ class APIClient {
                 let jsonDict = result["frames"]
                 print("jsonDict", jsonDict)
                 
-                completion(result as! [String:Double]) //Response result
+                completion(jsonDict as! [[String:Double]]) //Response result
              } catch let parsingError {
                 print("Error", parsingError)
            }
