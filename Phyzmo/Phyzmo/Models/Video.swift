@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class Video {
-    var title: String!
+    var title = "Default Title"
     var positionList: [Position]!
     
     init(title: String, positionList: [Position]) {
